@@ -213,3 +213,10 @@ print(s_name ^ s_other_name)#对称差集,删除相同元素后合并
 print(s_name.isdisjoint(s_other_name))#判断是否不相交
 print(s_name.issubset(s_other_name))  #判断s_name是否是s_other_name的子集
 print({'faker', 'deft'}.issubset(s_other_name))
+
+#浅copy,只copy第一层
+info2 = info.copy()
+
+#深copy,info2与info完全独立
+import copy
+info2 = copy.deepcopy(info)
