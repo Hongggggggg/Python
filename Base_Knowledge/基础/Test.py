@@ -220,3 +220,31 @@ info2 = info.copy()
 #深copy,info2与info完全独立
 import copy
 info2 = copy.deepcopy(info)
+
+import chardet
+#编码与解码
+s = "编码与解码"
+s = s.encode("utf-8")#以utf-8编码成二进制
+print(chardet.detect(s))
+print(s)
+s = s.decode("utf-8")#将二进制解码成utf-8形式
+print(s)
+#编码转换，需先转成unicode，再转成目标编码
+#utf-8->unicode->gbk
+#s = s.encode("unicode")#将二进制解码成utf-8形式
+#print(s)
+
+#函数的关键参数
+def register(name, age, country):
+    print(name)
+    print(age)
+    print(country)
+
+register(age = 18, name = "xiaoming", country = "CN")#关键参数顺序可以任意
+
+#非固定参数
+def join(name, age, *args, **kwargs):#*args代表元组，**kwargs代表字典, 位置参数传入args，关键参数传入kwargs
+    print(args, kwargs)
+    print(args[0], kwargs.get("sex"))
+
+join("xiaoming", 18, "CN", 100, sex = "M")
