@@ -1,3 +1,7 @@
+#三元表达式
+sex = "Female" if name == "Eva" else "Male"
+print(sex)
+
 #List
 names = ["wang", "hong", "xu", "zhao"]
 print(names)
@@ -239,8 +243,9 @@ def register(name, age, country):
     print(name)
     print(age)
     print(country)
+    return 1,2,3,4,5#返回多个值会当成元组输出
 
-register(age = 18, name = "xiaoming", country = "CN")#关键参数顺序可以任意
+print(register(age = 18, name = "xiaoming", country = "CN"))#关键参数顺序可以任意
 
 #非固定参数
 def join(name, age, *args, **kwargs):#*args代表元组，**kwargs代表字典, 位置参数传入args，关键参数传入kwargs
@@ -248,3 +253,40 @@ def join(name, age, *args, **kwargs):#*args代表元组，**kwargs代表字典, 
     print(args[0], kwargs.get("sex"))
 
 join("xiaoming", 18, "CN", 100, sex = "M")
+
+#全局变量
+global_var = [1, 2, 3]
+
+def test():
+    a = 10
+    b = [1, 2, 3]
+    #global_var = 3 这里会报错,不能对全局变量本身进行操作
+    global_var.append(4)#当全局变量是列表、字典等，在函数内部是可以对其进行操作的，因为是直接对全局变量地址里的具体内容进行操作
+    print(global_var)
+    print(locals())#打印函数内所有局部变量
+    #print(globals())#打印所有全局变量
+
+test()
+
+#嵌套函数
+name = "xiaoming"
+def change():
+    name = "xiaoming_change"
+    def change1():
+        name = "xiaoming_change1"
+        print(name)
+
+    change1()#只能在change()内部进行调用
+    print(name)
+
+change()
+print(name)
+
+#匿名函数
+calc = lambda x, y : x**y
+print(calc(2, 8))
+
+res = map(lambda x:x**2, [1, 3, 5, 7, 9])#map作用是将可迭代内容传入函数依次执行
+for i in res:
+    print(i)
+
