@@ -1,5 +1,7 @@
+
 #三元表达式
-sex = "Female" if name == "Eva" else "Male"
+name__test = "Eva"
+sex = "Female" if name__test == "Eva" else "Male"
 print(sex)
 
 #List
@@ -289,4 +291,28 @@ print(calc(2, 8))
 res = map(lambda x:x**2, [1, 3, 5, 7, 9])#map作用是将可迭代内容传入函数依次执行
 for i in res:
     print(i)
+
+
+#高阶函数
+def add_1(n):
+    return n + 1
+
+def sum(x, y, f):
+    return f(x) + f(y)
+
+print(sum(5, 6, add_1))
+
+#python内置函数
+a = [1, 2, 3]
+print(all(a))#可迭代对象a中所有元素都为True，则all(a)返回True
+print(any(a))#可迭代对象a有任意元素为True，则any(a)返回True
+a.append(0)
+print(all(a))#可迭代对象a中并非元素都为True，则all(a)返回False
+a.clear()
+print(any(a))#可迭代对象a所有元素全为False，则any(a)返回False
+
+chr(90)#返回数字对应的ASCII字符
+dir(a)#返回对象可调用的属性
+divmod(4, 2)#返回除法的商和余数（2，0）
+
 
