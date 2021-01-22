@@ -314,5 +314,17 @@ print(any(a))#可迭代对象a所有元素全为False，则any(a)返回False
 chr(90)#返回数字对应的ASCII字符
 dir(a)#返回对象可调用的属性
 divmod(4, 2)#返回除法的商和余数（2，0）
-
-
+eval_list = eval("['alex', 'snow', 'jack']")#将字符串转换成对应类型
+print(eval_list, type(eval_list))
+exec("print('Hello world')")#将字符串转换成程序执行
+filter_list = filter(lambda x:x>10, [0, 12, 34, 35, 2, 1, 55, 7, 9])#对list、dict、set、tuple等可迭代对象进行过滤
+print(list(filter_list))
+id(filter_list)#查看内存地址
+print(isinstance(eval_list, list))#判断数据结构的类型
+#iter()待更新
+map(lambda x:x**2, [1, 3, 5, 7, 9])#map作用是将可迭代内容传入函数依次执行
+print(max([1,2,3]))
+print(min([1,2,3]))
+a = [1, 2, 3, 4]
+b = ['a', 'b', 'c', 'd', 'e']
+print(list(zip(a, b)))#将多个列表拼成一个，多余的裁剪掉
