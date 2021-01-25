@@ -71,75 +71,6 @@ print(n.split(" ", 2))#可选分割几次，默认全分 rsplit从右开始
 #补0
 print(n.zfill(30))
 
-#字典{key1:value, key2:value2},
-#性质：1、key必须不可变 2、可存放多个value,value可以是列表或者其他 3、无序
-info = {
-    "name":"hong",
-    "age":20,
-    "job":"eng",
-    "weight": 60,
-    "salary":1000000,
-    "list": [1, 2, 4]}
-
-#打印所有key和value
-print(info.keys(), info.values())
-
-#增(若key已经存在则替换，没有则增加)
-info["height"] = 188
-d = {"name": "hammer", "country": "china"}
-info.update(d) #将字典d的键值对添加到info中,有重复则替换
-print(info)
-
-#删
-info.pop("height")  #删除指定key
-info.popitem()      #随便删除一个key
-del info["age"]     #同pop
-#names.clear()       #清空
-print(info)
-
-#查
-print(info["name"])
-print("age" in info)
-print(info.get("age", 10))#不存在则返回10,不设置则返回none
-print(info)
-print(info.items())#返回一个包含所有键值对的元组的列表
-#遍历
-for i in info: #推荐
-    print(i, info[i])
-
-for i in info.items():
-    print(i)
-
-for k,v in info.items():
-    print(k,v)
-
-#集合{a, b, c}
-a = {1, 2, 3, 3, 2, 'alex', 'hong', 'hong'}#天生去重
-print(a)
-
-li = [4, 5, 6, 7, 7, 4]
-print(set(li))
-
-a.add(5)#增加元素
-
-#a.add(li)#不可增加可变元素
-
-a.remove(5)# 删除元素
-a.discard(5)# 删除元素
-a.pop()#随机删
- #集合的关系运算
-
-s_name = {'xiaozhu', 'peiqi', 'ming', 'uzi', 'theshy', 'bin'}
-s_other_name = {'faker', 'deft', 'show', 'maker', 'uzi', 'theshy'}
-print(s_name & s_other_name)#交集
-print(s_name | s_other_name)#并集
-print(s_name - s_other_name)#差集
-print(s_name ^ s_other_name)#对称差集,删除相同元素后合并
-#三种关系：相交，包含，不相交
-print(s_name.isdisjoint(s_other_name))#判断是否不相交
-print(s_name.issubset(s_other_name))  #判断s_name是否是s_other_name的子集
-print({'faker', 'deft'}.issubset(s_other_name))
-
 #浅copy,只copy第一层
 info2 = info.copy()
 
@@ -248,3 +179,6 @@ print(min([1,2,3]))
 a = [1, 2, 3, 4]
 b = ['a', 'b', 'c', 'd', 'e']
 print(list(zip(a, b)))#将多个列表拼成一个，多余的裁剪掉
+
+#python技巧
+
