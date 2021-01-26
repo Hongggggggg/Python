@@ -32,3 +32,34 @@ print(fib(20))
 
 for i in fib(20):
     print(i)
+
+
+def g_test():
+    while True:
+        n = yield
+        print("receive from outside: ", n)
+
+g = g_test()
+g.__next__() #send之前必须调用一次生成器，此时会发送None至yield
+
+for i in range(10):
+    g.send(i)#发送i
+
+#单线程下的多并发
+def consumer(name):
+    while True:
+        num = yield
+        print("%s吃了第%s个包子"%(name, num))
+
+c1 = consumer("c1")
+c1.__next__()
+c2 = consumer("c2")
+c2.__next__()
+c3 = consumer("c3")
+c3.__next__()
+
+for i in range(10):
+    c1.send(i)
+    c2.send(i)
+    c3.send(i)
+
