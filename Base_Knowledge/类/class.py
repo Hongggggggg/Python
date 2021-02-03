@@ -17,3 +17,20 @@ dog1.play() #相当于dog1.play(dog1), self就代表dog1
 print(dog1) #打印dog1与self值会发现是相等的
 
 
+class People:
+    nationality = 'CN'#公共属性
+
+    def __init__(self, name, age, sex):
+        self.name = name
+        self.age = age
+        self.sex = sex
+
+p1 = People('JQK', 20, 'M')
+p2 = People('123', 24, 'F')
+
+print(p1.nationality, p2.nationality, People.nationality)#公共属性是一致的
+p2.nationality = 'JP' #相当于p2创建了一个新的实例属性，原公共属性nationality不受影响
+print(p1.nationality, p2.nationality, People.nationality)
+
+
+
