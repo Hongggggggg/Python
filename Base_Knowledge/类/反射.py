@@ -52,3 +52,20 @@ if hasattr(反射, 'p'):
     o = getattr(mod, 'p')
     print(o)
 '''
+
+
+#反射的妙用
+class User:
+    def login(self):
+        print('Login')
+    def register(self):
+        print('Register')
+    def save(self):
+        print('Save')
+
+u = User()
+while True:
+    user_cmd = input(">>>").strip()
+    if hasattr(u, user_cmd):
+        func = getattr(u, user_cmd)
+        func()
