@@ -1,6 +1,7 @@
 import os
 import sys
 import random
+import importlib
 
 print(__file__)#打印当前脚本所在的路径，包含文件名
 os.getcwd()#查看当前目录
@@ -18,3 +19,5 @@ print(random.sample('ghdfafgawera sddfh', 3))#随机选取几个字符
 a = list(range(20))
 random.shuffle(a)#洗牌
 print(a)
+
+importlib.import_module("json_mod") #根据字符串动态导入模块，可跨文件导入
