@@ -1,3 +1,4 @@
+import sys
 class Person:
     def __init__(self, name):
         self.name = name
@@ -33,3 +34,21 @@ setattr(Person, "talk", talk)#可以直接给类添加方法
 p.talk()#此时不用传入实例
 
 delattr(p, "sex")#删除属性
+
+if __name__ == '__main__': #__name__如果是在模块本身获取，则为“__main__”,如果是在其他模块导入，则为"反射.py"
+    print('module self call') #只有在当前模块本身运行程序才会打印这句话
+
+mod = sys.modules[__name__]
+print(mod.p)
+if hasattr(mod, 'p'): 
+    o = getattr(mod, 'p')
+    print(o)
+
+#其他模块也可以直接使用
+
+'''
+
+if hasattr(反射, 'p'): 
+    o = getattr(mod, 'p')
+    print(o)
+'''
