@@ -61,10 +61,17 @@ class Printer:
             cls.instance = obj
         return cls.instance #以后每次实例化都直接返回第一次存的实例对象
 
+    def __call__(self, *args, **kwargs): #对象加括号的时候会调用这个函数
+        print('call ', args, kwargs)
+
 p1 = Printer('Word')
 p2 = Printer('PDF')
 
 p1.add_task('word')
 p2.add_task('pdf')
+
+p1()#调用call
+Printer('ABD')()#调用call
+
 
 print(p1, p2)
