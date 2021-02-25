@@ -32,5 +32,5 @@ print(p1.nationality, p2.nationality, People.nationality)#公共属性是一致�
 p2.nationality = 'JP' #相当于p2创建了一个新的实例属性，原公共属性nationality不受影响
 print(p1.nationality, p2.nationality, People.nationality)
 
-
+isinstance(p1, People)#检查p1是否是People的对象
 
