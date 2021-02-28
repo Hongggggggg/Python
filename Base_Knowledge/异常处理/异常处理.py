@@ -43,3 +43,11 @@ except WebConnErr as e:
     print(e)
 except Exception as e: #无法抓到自定义的异常
     print(e)
+
+#断言：判断代码是否符合预期
+def myinterface(name, age):
+    assert type(name) is str
+    assert type(age) is int
+
+myinterface("hammer", 'aabc')
+
