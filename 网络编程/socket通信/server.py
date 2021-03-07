@@ -12,10 +12,10 @@ tcp_socket.listen(5)
 conn, client_addr = tcp_socket.accept()
 
 #收发数据
-data = conn.recv(1024)#一次最多接收1024字节
-print('Rcv from client: ', data)
-
-conn.send(data.upper())
+while True:
+    data = conn.recv(1024)#一次最多接收1024字节
+    print('Rcv from client: ', data)
+    conn.send(data.upper())
 
 #关闭连接
 conn.close()
