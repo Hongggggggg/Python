@@ -8,8 +8,9 @@ tcp_socket.connect(('127.0.0.1', 8081))
 #发、收消息
 while True:
     data = input(">>").strip()
-    tcp_socket.send(data.encode('utf-8'))
-    data = tcp_socket.recv(1024)
-    print(data)
+    if data:
+        tcp_socket.send(data.encode('utf-8'))
+        data = tcp_socket.recv(1024)
+        print(data)
 
 tcp_socket.close()
