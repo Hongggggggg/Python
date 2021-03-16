@@ -10,7 +10,7 @@ while True:
     data = input(">>").strip()
     if data:
         tcp_socket.send(data.encode('utf-8'))
-        data = tcp_socket.recv(1024)
+        data = tcp_socket.recv(4096)
         print(data)
 
 tcp_socket.close()

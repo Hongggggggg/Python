@@ -1,4 +1,5 @@
 import socket
+import subprocess
 
 tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #可重复使用端口
@@ -16,10 +17,19 @@ while True:
     #收发数据
     while True:
         try:
-            data = conn.recv(1024)#一次最多接收1024字节
-            if not data: break
-            print('Rcv from client: ', data)
-            conn.send(data.upper())
+            cmd = conn.recv(1024)#一次最多接收1024字节
+            if not cmd: break
+
+            obj = subprocess.Popen( cmd.decode('utf-8'), shell = True,
+                                    stdout = subprocess.PIPE,
+                                    stderr = subprocess.PIPE,)
+
+            print('rcv cmd:' + cmd.decode('utf-8'))
+            stdout=obj.stdout.read()
+            stderr=obj.stderr.read()
+
+            print(stdout + stderr)
+            conn.send(stdout + stderr)
         except ConnectionResetError as e:
             print(e)
             break
