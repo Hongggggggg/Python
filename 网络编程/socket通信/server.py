@@ -1,5 +1,7 @@
 import socket
 import subprocess
+import json
+import struct
 
 tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) #可重复使用端口
@@ -29,7 +31,27 @@ while True:
             stderr=obj.stderr.read()
 
             print(stdout + stderr)
-            conn.send(stdout + stderr)
+
+            #第一步制定报头
+            header_dir = {
+                "filename": "tcp.txt",
+                "md5": 123456,
+                "total_size": len(stdout) + len(stderr)
+            }
+            header_json = json.dumps(header_dir) #先转成json格式的字符串
+            header_bytes = header_json.encode('utf-8') #再将json字符串转成byte类型 
+
+            #第二步，先发送报头的长度
+            header_size = struct.pack('i', len(header_bytes))
+            conn.send(header_size)
+
+            #第三步，发送报头
+            conn.send(header_bytes)
+
+            #第四步，发送payload
+            conn.send(stdout)
+            conn.send(stderr)
+
         except ConnectionResetError as e:
             print(e)
             break
